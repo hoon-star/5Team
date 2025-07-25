@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}책 목록 - 책 리뷰 웹사이트{% endblock %}
+
+{% block content %}
+<h1>📚 모든 책 목록</h1>
+<div class="book-list">
+    {% if books %}
+        {% for book in books %}
+        <div class="book-item">
+            <a href="{{ url_for('book_detail', book_id=book.id) }}">
+                {% if book.image %}
+                <img src="{{ book.image }}" alt="{{ book.title }} 표지">
+                {% else %}
+                <div class="no-image">No Image</div>
+                {% endif %}
+                <h2>{{ book.title }}</h2>
+                <p class="author">{{ book.author }}</p>
+                <p class="publisher">{{ book.publisher }}</p>
+            </a>
+        </div>
+        {% endfor %}
+    {% else %}
+    <p>아직 등록된 책이 없습니다. `python db.py`를 실행하여 책을 추가해보세요.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,2 +1,2 @@
-flask
-pymysql
+Flask==2.3.3
+pymysql==1.1.0

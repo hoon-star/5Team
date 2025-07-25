@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}책 리뷰 웹사이트{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="{{ url_for('index') }}">📚 책 리뷰</a>
+            </div>
+            <ul class="nav-links">
+                {% if session.get('user_id') %} {# user_id가 세션에 있으면 로그인 상태 #}
+                <li>환영합니다, {{ session.get('username') }}님!</li> {# 세션에서 username 가져오기 #}
+                <li><a href="{{ url_for('logout') }}">로그아웃</a></li>
+                {% else %}
+                <li><a href="{{ url_for('login') }}">로그인</a></li>
+                <li><a href="{{ url_for('register') }}">회원가입</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                <div class="flash-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 책 리뷰 웹사이트. 모든 권리 보유.</p>
+    </footer>
+</body>
+</html>

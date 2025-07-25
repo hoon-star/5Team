@@ -17,7 +17,7 @@
 
 | 이름     | 역할                       |
 |----------|----------------------------|
-| 이재훈   | PM / 기획, 테스트, DevOps (Git, Cloudtype 배포)          |
+| 이재훈   | PM / DevOps (Git, Cloudtype 배포)          |
 | 이지영   | 백엔드 (Flask, MariaDB)    |
 | 윤빈     | 프론트엔드 (Jinja2, HTML/CSS) |
 | 고강민   | DB 설계 및 데이터 관리     |
